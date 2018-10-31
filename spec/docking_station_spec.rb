@@ -9,8 +9,23 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
-  it 'expects to dock a bike' do
+  it 'expects to respond a #dock with 1 arg' do
     expect(subject).to respond_to(:dock).with(1).argument
+  end
+
+  it 'expects to respond to #bike' do
+    expect(subject).to respond_to(:bike)
+  end
+
+  it 'expects to store an instance of Bike' do
+    bike = Bike.new
+    expect(subject.dock(bike)).to eq bike
+  end
+
+  it 'expects to return an instance of bike' do
+    bike = Bike.new
+    subject.dock(bike)
+    expect(subject.bike).to eq bike
   end
 
 end
