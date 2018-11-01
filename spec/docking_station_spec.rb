@@ -2,8 +2,8 @@ require 'docking_station'
 
 describe DockingStation do
 
-  it 'expects to respond to #bike' do
-    expect(subject).to respond_to(:bike)
+  it 'expects to respond to #bikes' do
+    expect(subject).to respond_to(:bikes)
   end
 
   describe '#release_bike' do
@@ -32,18 +32,18 @@ describe DockingStation do
 
     it 'expects to store an instance of Bike' do
       bike = Bike.new
-      expect(subject.dock(bike)).to eq bike
+      expect(subject.dock(bike)).to eq [bike]
     end
 
     it 'expects to return an instance of bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.bikes).to eq [bike]
     end
 
-    it 'raises an error when docking station is full' do
-      subject.dock(Bike.new)
-      expect { subject.dock(Bike.new) }.to raise_error 'Docking Station full'
+    it 'raises an error when full' do
+      20.times { subject.dock Bike.new }
+      expect { subject.dock Bike.new }.to raise_error 'Docking station full'
     end
 
   end
