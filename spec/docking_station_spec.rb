@@ -25,7 +25,6 @@ describe DockingStation do
 
   describe '#dock' do
 
-
     it 'expects to respond a #dock with 1 arg' do
       expect(subject).to respond_to(:dock).with(1).argument
     end
@@ -42,11 +41,13 @@ describe DockingStation do
     end
 
     it 'raises an error when full' do
-      20.times { subject.dock Bike.new }
+      DockingStation::DEFAULT_CAPACITY.times {subject.dock Bike.new}
       expect { subject.dock Bike.new }.to raise_error 'Docking station full'
     end
 
   end
+
+
 
 
 end
