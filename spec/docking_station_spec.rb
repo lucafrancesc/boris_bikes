@@ -6,9 +6,32 @@ describe DockingStation do
     expect(subject).to respond_to(:bikes)
   end
 
-  it 'expect to have a starting value' do
-    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+
+  describe 'initialization' do
+
+    it 'expect to have a starting value' do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+
+    it 'has a variable capacity' do
+      docking_station = DockingStation.new(50)
+      50.times { docking_station.dock Bike.new }
+      expect{ docking_station.dock Bike.new }.to raise_error 'Docking station full'
+    end
+
+    # subject { DockingStation.new }
+    # let(:bike) { Bike.new }
+    # it 'defaults capacity' do
+    #   described_class::DEFAULT_CAPACITY.times do
+    #     subject.dock(bike)
+    #   end
+    #   expect{ subject.dock(bike) }.to raise_error 'Docking station full'
+    # end
+    # 
+
   end
+
+
 
   describe '#release_bike' do
 
