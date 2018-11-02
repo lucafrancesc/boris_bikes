@@ -28,7 +28,6 @@ describe DockingStation do
     #   expect{ subject.dock(bike) }.to raise_error 'Docking station full'
     # end
     # 
-
   end
 
 
