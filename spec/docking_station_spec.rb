@@ -6,6 +6,10 @@ describe DockingStation do
     expect(subject).to respond_to(:bikes)
   end
 
+  it 'expect to have a starting value' do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
   describe '#release_bike' do
 
     it { is_expected.to respond_to :release_bike}
@@ -46,8 +50,5 @@ describe DockingStation do
     end
 
   end
-
-
-
 
 end
